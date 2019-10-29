@@ -13,6 +13,17 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     float force;
 
+    public GameObject bulletplaceHolder;
+    [SerializeField]
+    GameObject bulletPrefab;
+    [SerializeField]
+    float bulletSpeed;
+    float timer = 0;
+    [SerializeField]
+    int waitingTime;
+
+    bool fire = false;
+
     public GameObject player;
     public GameObject enemy;
 
@@ -27,9 +38,28 @@ public class EnemyAI : MonoBehaviour
     {
         Vector3 direction = (player.transform.position - enemy.transform.position).normalized;
 
+        enemy.transform.LookAt(player.transform);
+
         velocitE = direction * force;
 
         //enemy.transform.LookAt(player.transform);
         rb.velocity = velocitE;
+
+        timer += Time.deltaTime;
+        if (timer > waitingTime)
+        {
+            //Action
+            timer = 0;
+            Shooting();
+        }
+    }
+
+    void Shooting()
+    {
+        GameObject b;
+        Debug.Log("shot");
+        b = Instantiate(bulletPrefab, bulletplaceHolder.transform.position, Quaternion.identity);
+        b.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed,ForceMode.Impulse);
     }
 }
+

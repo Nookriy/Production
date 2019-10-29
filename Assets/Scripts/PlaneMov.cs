@@ -50,9 +50,6 @@ public class PlaneMov : MonoBehaviour
         {
             b = Instantiate(bulletPrefab, bulletplaceHolder.transform.position, Quaternion.identity);
             b.GetComponent<Rigidbody>().AddForce(transform.up * bulletSpeed);
-        }
-
-
-        
+        }        
     }
 }
