@@ -361,7 +361,7 @@ BoxCollider:
   m_GameObject: {fileID: 1261759358}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -437,7 +437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc090a605851184a917a1f038d9239d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 5
+  force: 0.05
   player: {fileID: 311700708}
   enemy: {fileID: 1261759358}
 --- !u!54 &1261759364

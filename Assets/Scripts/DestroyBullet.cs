@@ -9,8 +9,7 @@ public class DestroyBullet : MonoBehaviour
     {
         Invoke("SelfDestruct", 3f);
     }
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
