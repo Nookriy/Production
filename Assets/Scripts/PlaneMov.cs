@@ -19,9 +19,7 @@ public class PlaneMov : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        bulletplaceHolder = GameObject.FindGameObjectWithTag("BPlaceHolder");
-
-        
+        bulletplaceHolder = GameObject.FindGameObjectWithTag("BPlaceHolder");        
     }
 
     // Update is called once per frame
@@ -29,7 +27,6 @@ public class PlaneMov : MonoBehaviour
     {
         Controls();
         Shooting();
-
     }
 
     void Controls()
@@ -37,10 +34,16 @@ public class PlaneMov : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
 
-        rb.AddForce(transform.up * y * force);
+        if (Input.GetKey(KeyCode.W)) 
+            rb.AddForce(transform.up * y * force);
 
         transform.Rotate(new Vector3(0,0,RotationSpeed * -x), Space.Self);
 
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            transform.Rotate(this.transform.rotation.x, this.transform.rotation.y, -180);
+            rb.MoveRotation(Quaternion.Euler(this.rb.rotation.x, this.rb.rotation.y, -180));
+        }
     }
 
     void Shooting()
