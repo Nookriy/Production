@@ -15,6 +15,10 @@ public class PlaneMov : MonoBehaviour
     [SerializeField]
     float bulletSpeed;
 
+    Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+    public GameObject groundplane;
+    float rayLength;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,26 +37,30 @@ public class PlaneMov : MonoBehaviour
     {
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
+        
+        Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (Input.GetKey(KeyCode.W)) 
-            rb.AddForce(transform.up * y * force);
-
-        transform.Rotate(new Vector3(0,0,RotationSpeed * -x), Space.Self);
-
-        if(Input.GetKeyDown(KeyCode.S))
+        if (groundPlane.Raycast(cameraRay, out rayLength))
         {
-            transform.Rotate(this.transform.rotation.x, this.transform.rotation.y, -180);
-            rb.MoveRotation(Quaternion.Euler(this.rb.rotation.x, this.rb.rotation.y, -180));
-        }
-    }
+            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+            Debug.DrawLine(cameraRay.origin, pointToLook, Color.black);
 
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+
+        }
+
+        if (Input.GetKey(KeyCode.W))
+            rb.AddForce(transform.forward * y * force);
+        //transform.Rotate(new Vector3(0,0,RotationSpeed * -x), Space.Self);
+    }
+    
     void Shooting()
     {
         GameObject b;
         if (Input.GetButtonDown("Fire1"))
         {
             b = Instantiate(bulletPrefab, bulletplaceHolder.transform.position, Quaternion.identity);
-            b.GetComponent<Rigidbody>().AddForce(transform.up * bulletSpeed);
+            b.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
         }        
     }
 }
