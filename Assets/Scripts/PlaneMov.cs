@@ -23,7 +23,7 @@ public class PlaneMov : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        bulletplaceHolder = GameObject.FindGameObjectWithTag("BPlaceHolder");        
+        bulletplaceHolder = GameObject.FindGameObjectWithTag("BPlaceHolder");
     }
 
     // Update is called once per frame

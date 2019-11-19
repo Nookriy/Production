@@ -12,12 +12,17 @@ public class CamScript : MonoBehaviour
     public Vector3 offset;
 
     private Camera mainCam;
+
+    Rigidbody camrb;
+    Rigidbody playerrb;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindObjectOfType<PlaneMov>();
         mainCam = Camera.main;
         mainCam.transform.position = player.transform.position + offset;
+        camrb = mainCam.GetComponent<Rigidbody>();
+        playerrb = player.GetComponent<Rigidbody>();
         //Debug.Log(Vector3.Distance(gameObject.transform.position, player.gameObject.transform.position));
         //Debug.Log((transform.position.x - player.transform.position.x) + " , " + (transform.position.y - player.transform.position.y));
     }
@@ -34,9 +39,14 @@ public class CamScript : MonoBehaviour
         //y dist between -9 and 9 camera will not follow OR x dist between 20 and -20 camm wil not follow
         //mainCam.transform.position = player.transform.position + offset;
         if (transform.position.x - player.transform.position.x > maxDistx || transform.position.x - player.transform.position.x < minDistx ||
-           transform.position.y - player.transform.position.y > maxDisty || transform.position.y - player.transform.position.y < minDisty)
+           transform.position.z - player.transform.position.z > maxDisty || transform.position.z - player.transform.position.z < minDisty)
         {
-            mainCam.transform.position = Vector3.MoveTowards(transform.position, player.transform.position + offset, camSpeed);
+            //mainCam.transform.position = Vector3.MoveTowards(transform.position, player.transform.position + offset, camSpeed);
+            camrb.velocity = new Vector3(playerrb.velocity.x, 0, playerrb.velocity.z);
+        }
+        else
+        {
+            camrb.velocity = Vector3.zero;
         }
         //Debug.Log(Vector3.Distance(gameObject.transform.position, player.gameObject.transform.position));
         //Debug.Log((transform.position.x - player.transform.position.x) + " , " + (transform.position.y - player.transform.position.y));
