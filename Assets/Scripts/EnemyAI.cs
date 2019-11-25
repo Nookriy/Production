@@ -24,13 +24,14 @@ public class EnemyAI : MonoBehaviour
 
     bool fire = false;
 
-    public GameObject player;
+    PlaneMov player;
     public GameObject enemy;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = enemy.GetComponent<Rigidbody>();
+        player = GameObject.FindObjectOfType<PlaneMov>();
     }
 
     // Update is called once per frame
@@ -59,7 +60,7 @@ public class EnemyAI : MonoBehaviour
         GameObject b;
         Debug.Log("shot");
         b = Instantiate(bulletPrefab, bulletplaceHolder.transform.position, Quaternion.identity);
-        b.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed,ForceMode.Impulse);
+        b.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed,ForceMode.Impulse);    
     }
 }
 

@@ -39,14 +39,13 @@ public class PlaneMov : MonoBehaviour
         float y = Input.GetAxis("Vertical");
         
         Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        
         if (groundPlane.Raycast(cameraRay, out rayLength))
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
             Debug.DrawLine(cameraRay.origin, pointToLook, Color.black);
 
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
-
         }
 
         if (Input.GetKey(KeyCode.W))
