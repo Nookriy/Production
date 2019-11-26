@@ -186,13 +186,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dc090a605851184a917a1f038d9239d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 1
+  force: 10
   bulletplaceHolder: {fileID: 146546684855859691}
   bulletPrefab: {fileID: 4282703670375796291, guid: d0a6733593fe9484695f6b55c0bf099c,
     type: 3}
-  bulletSpeed: 10
+  bulletSpeed: 100
   waitingTime: 1
-  player: {fileID: 0}
   enemy: {fileID: 146546684955964297}
 --- !u!54 &146546684955964275
 Rigidbody:
