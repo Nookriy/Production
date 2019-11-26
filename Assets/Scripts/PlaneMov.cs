@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlaneMov : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class PlaneMov : MonoBehaviour
     public GameObject groundplane;
     float rayLength;
 
+    public Image crosshair;
+
     Vector3 worldMouse;
 
     // Start is called before the first frame update
@@ -31,6 +34,7 @@ public class PlaneMov : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Cursor.visible = false;
         Controls();
         Shooting();
     }
@@ -41,6 +45,8 @@ public class PlaneMov : MonoBehaviour
         float y = Input.GetAxis("Vertical");
         var mouse = Input.mousePosition;
         mouse.z = 0;
+
+        crosshair.transform.position = mouse;
 
         var ScreenPlayer = Camera.main.WorldToScreenPoint(this.transform.position);
         ScreenPlayer.z = 0;
