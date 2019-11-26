@@ -38,6 +38,9 @@ public class CamScript : MonoBehaviour
     {
         //y dist between -9 and 9 camera will not follow OR x dist between 20 and -20 camm wil not follow
         //mainCam.transform.position = player.transform.position + offset;
+
+        Vector3 followSpot = player.transform.position + offset;
+        
         if (transform.position.x - player.transform.position.x > maxDistx || transform.position.x - player.transform.position.x < minDistx ||
            transform.position.z - player.transform.position.z > maxDisty || transform.position.z - player.transform.position.z < minDisty)
         {
