@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+    public int BulletTimer = 5;
     private BattleManager bm;
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("SelfDestruct", 3f);
+        Invoke("SelfDestruct", BulletTimer);
         bm = GameObject.FindObjectOfType<BattleManager>();
     }
 
