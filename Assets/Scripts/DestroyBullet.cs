@@ -17,7 +17,7 @@ public class DestroyBullet : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             //damage or destroy enemy
-            collision.gameObject.GetComponent<EnemyHealth>().UpdateEnemyHealth(-1);
+            collision.gameObject.GetComponent<EnemyHealth>().UpdateEnemyHealth(-3);
             //add score MAYBE
             bm.UpdateScore(3);
             //play audio

@@ -16,6 +16,8 @@ public class PlaneMov : MonoBehaviour
     [SerializeField]
     float bulletSpeed;
 
+    public ParticleSystem planetrail;
+
     Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
     public GameObject groundplane;
     float rayLength;
@@ -66,7 +68,12 @@ public class PlaneMov : MonoBehaviour
         dir.y = 0;
         transform.forward = dir;
         if (Input.GetKey(KeyCode.W))
+        {
             rb.AddForce(transform.forward * y * force);
+            planetrail.Play();
+        }
+        else
+            planetrail.Stop();
     }
 
     void Shooting()
