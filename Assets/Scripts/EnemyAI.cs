@@ -49,8 +49,10 @@ public class EnemyAI : MonoBehaviour
         }
 
         ShootingTimer();
+
     }
 
+    //Same as IndMovement, except movment direction is from centre point of flock towards player, rather from the point of the enemy itself towards player
     private void FlockingMovement()
     {
         Vector3 direction = (player.transform.position - flockingSC.vcentre).normalized;
@@ -61,13 +63,10 @@ public class EnemyAI : MonoBehaviour
 
     private void IndividualMovement()
     {
+        //Getting the vector between enemy & player, then normalizing it to return only the direction vector
         Vector3 direction = (player.transform.position - enemy.transform.position).normalized;
-
         enemy.transform.LookAt(player.transform);
-
         velocitE = direction * force;
-
-        //enemy.transform.LookAt(player.transform);
         rb.velocity = velocitE;
     }
 
@@ -79,6 +78,7 @@ public class EnemyAI : MonoBehaviour
             //Action
             timer = 0;
             Shooting();
+            
         }
     }
 
