@@ -1139,7 +1139,6 @@ MonoBehaviour:
   maxDisty: 7
   camSpeed: 100
   offset: {x: 0, y: 15, z: 1}
-  mainCam: {fileID: 1331885214}
 --- !u!54 &1331885217
 Rigidbody:
   m_ObjectHideFlags: 0
