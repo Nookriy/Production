@@ -33,10 +33,11 @@ public class EnemySpawner : MonoBehaviour
 
         if (SpawningPoints.Length == 0)
         {
+            WaveCountdown = TimeBetweenWaves;
             Debug.LogError("No Spawn Points Referenced");
         }
 
-        WaveCountdown = TimeBetweenWaves;
+        //WaveCountdown = TimeBetweenWaves;
     }
 
     void Update()
