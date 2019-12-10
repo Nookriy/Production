@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour
 
     bool fire = false;
 
-    PlaneMov player;
+    GameObject player;
     public GameObject enemy;
 
     public EnemyFlock flockingSC;
@@ -33,7 +33,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         rb = enemy.GetComponent<Rigidbody>();
-        player = GameObject.FindObjectOfType<PlaneMov>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame

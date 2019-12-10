@@ -513,7 +513,7 @@ GameObject:
   - component: {fileID: 580598246}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1047,8 +1047,8 @@ GameObject:
   - component: {fileID: 1331885215}
   - component: {fileID: 1331885214}
   - component: {fileID: 1331885213}
-  - component: {fileID: 1331885216}
   - component: {fileID: 1331885217}
+  - component: {fileID: 1331885216}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1130,7 +1130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1331885212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e8dbb1869e90b64781d053466f584cb, type: 3}
+  m_Script: {fileID: 11500000, guid: a66735870e6310448833df3d55a9745b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minDistx: -20
@@ -1139,6 +1139,7 @@ MonoBehaviour:
   maxDisty: 7
   camSpeed: 100
   offset: {x: 0, y: 15, z: 1}
+  mainCam: {fileID: 1331885214}
 --- !u!54 &1331885217
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -66,6 +66,10 @@ public class GroundMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+            MoveSpeed *= 2;
+        else
+            MoveSpeed = 8f;
         PlayerRB.MovePosition(PlayerRB.position + Movement * MoveSpeed * Time.fixedDeltaTime);
     }
 
