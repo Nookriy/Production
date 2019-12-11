@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class EnemySpawner : MonoBehaviour
 {
     public enum SpawningState {SPAWNING, WAIT, COUNTDOWN };
@@ -15,6 +14,8 @@ public class EnemySpawner : MonoBehaviour
         public int Count;
         public float Rate;
     }
+
+ 
 
     public Wave[] EnemyWaves;
     private int NextWave = 0;
@@ -30,7 +31,6 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-
         if (SpawningPoints.Length == 0)
         {
             WaveCountdown = TimeBetweenWaves;

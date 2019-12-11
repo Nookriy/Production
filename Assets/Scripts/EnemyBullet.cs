@@ -29,6 +29,12 @@ public class EnemyBullet : MonoBehaviour
             //
             SelfDestruct();
         }
+        if (other.gameObject.tag == "Wall")
+        {
+            //play audio
+            //
+            SelfDestruct();
+        }
 
 
     }

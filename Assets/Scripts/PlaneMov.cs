@@ -17,7 +17,7 @@ public class PlaneMov : MonoBehaviour
     float bulletSpeed;
 
     public ParticleSystem planetrail;
-
+    
     Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
     public GameObject groundplane;
     float rayLength;
