@@ -481,7 +481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 6d4cfbc0686ed48c3bfca40a3f0a790d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6d4cfbc0686ed48c3bfca40a3f0a790d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -609,7 +609,7 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
+        time: 0.60440063
         value: 0
         inSlope: 0.07963986
         outSlope: 0.07963986
@@ -11107,7 +11107,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: a31b0aad16fbc1b43b3cd82e98532a06,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a31b0aad16fbc1b43b3cd82e98532a06,
         type: 3}
