@@ -67,13 +67,14 @@ public class PlaneMov : MonoBehaviour
         dir.z = dir.y;
         dir.y = 0;
         transform.forward = dir;
+        bool withChildren = default;
         if (Input.GetKey(KeyCode.W))
         {
             rb.AddForce(transform.forward * y * force);
             planetrail.Play();
         }
         else
-            planetrail.Stop();
+            planetrail.Stop(withChildren, stopBehavior: ParticleSystemStopBehavior.StopEmittingAndClear);
     }
 
     void Shooting()
