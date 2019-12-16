@@ -16,6 +16,15 @@ public class PlaneMov : MonoBehaviour
     [SerializeField]
     float bulletSpeed;
 
+    float nextSoundTime = 0;
+
+    public AudioSource thruster;
+    public AudioClip thrustnoise;
+    public AudioClip playerbulletsound;
+    public AudioSource playeraudiosource;
+
+    public TrailRenderer alttrail;
+
     public ParticleSystem planetrail;
     
     Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -25,18 +34,33 @@ public class PlaneMov : MonoBehaviour
     public Image crosshair;
 
     Vector3 worldMouse;
+    private bool ismoving;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         bulletplaceHolder = GameObject.FindGameObjectWithTag("BPlaceHolder");
+        playeraudiosource.clip = playerbulletsound;
+        thruster.clip = thrustnoise;
     }
 
     // Update is called once per frame
     void Update()
     {
         Cursor.visible = false;
+        if (ismoving == true)
+        {
+            if (Time.time >= nextSoundTime)
+            {
+                thruster.PlayOneShot(thrustnoise);
+                nextSoundTime = Time.time + thrustnoise.length;
+            }
+        }
+        else
+        {
+            nextSoundTime = 0;
+        }
         Controls();
         Shooting();
     }
@@ -72,9 +96,15 @@ public class PlaneMov : MonoBehaviour
         {
             rb.AddForce(transform.forward * y * force);
             planetrail.Play();
+            ismoving = true;
         }
         else
+        {
             planetrail.Stop(withChildren, stopBehavior: ParticleSystemStopBehavior.StopEmittingAndClear);
+            thruster.Stop();
+            alttrail.Clear();
+            ismoving = false;
+        }
     }
 
     void Shooting()
@@ -82,6 +112,7 @@ public class PlaneMov : MonoBehaviour
         GameObject b;
         if (Input.GetButtonDown("Fire1"))
         {
+            playeraudiosource.PlayOneShot(playerbulletsound);
             b = Instantiate(bulletPrefab, bulletplaceHolder.transform.position, Quaternion.identity);
             b.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
         }        
