@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
     [SerializeField]
     private int playerHealth, score;
     private Text playerHealthText, scoreText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +37,11 @@ public class BattleManager : MonoBehaviour
         if (playerHealth <= 0)
         {
             //GameOver
+        }
+
+        if (playerHealth <= 0)
+        {
+            SceneManager.LoadScene("Level2");
         }
         //update the text
         playerHealthText.text = "Health: " + playerHealth;
