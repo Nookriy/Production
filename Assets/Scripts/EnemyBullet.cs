@@ -24,19 +24,18 @@ public class EnemyBullet : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             //damage or destroy player
-            bm.UpdatePlayerHealth(-3);
+            bm.UpdatePlayerHealth(-1);
             //play audio
             //
             SelfDestruct();
         }
+        else
         if (other.gameObject.tag == "Wall")
         {
             //play audio
             //
             SelfDestruct();
         }
-
-
     }
 
     public void SelfDestruct()

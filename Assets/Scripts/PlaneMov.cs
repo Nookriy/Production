@@ -25,6 +25,8 @@ public class PlaneMov : MonoBehaviour
 
     public TrailRenderer alttrail;
 
+    private BattleManager bm;
+
     public ParticleSystem planetrail;
     
     Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -43,6 +45,7 @@ public class PlaneMov : MonoBehaviour
         bulletplaceHolder = GameObject.FindGameObjectWithTag("BPlaceHolder");
         playeraudiosource.clip = playerbulletsound;
         thruster.clip = thrustnoise;
+        bm = FindObjectOfType<BattleManager>();
     }
 
     // Update is called once per frame
@@ -116,5 +119,15 @@ public class PlaneMov : MonoBehaviour
             b = Instantiate(bulletPrefab, bulletplaceHolder.transform.position, Quaternion.identity);
             b.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
         }        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+            bm.UpdateScore(9);
+            bm.UpdatePlayerHealth(-10);
+        }
     }
 }

@@ -9,8 +9,12 @@ public class BattleManager : MonoBehaviour
     private int playerHealth, score;
     private Text playerHealthText, scoreText;
     // Start is called before the first frame update
+
+
+
     void Start()
     {
+        
         scoreText = GameObject.FindGameObjectWithTag("Score").GetComponent<Text>();
         playerHealthText = GameObject.FindGameObjectWithTag("Health").GetComponent<Text>();
         //Showing score so that it's not empty

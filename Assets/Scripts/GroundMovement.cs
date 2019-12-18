@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GroundMovement : MonoBehaviour
 {
 
-    public float MoveSpeed = 8f;
+    [SerializeField] public float MoveSpeed;
     public Rigidbody PlayerRB;
 
     [SerializeField]
@@ -17,6 +17,8 @@ public class GroundMovement : MonoBehaviour
     [SerializeField]
     float bulletSpeed;
 
+    AudioSource tanksource;
+
     Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
     public GameObject groundplane;
     float rayLength;
@@ -25,11 +27,14 @@ public class GroundMovement : MonoBehaviour
 
     Vector3 Movement;
     Vector3 worldMouse;
+    private BattleManager bm;
 
     void Start()
     {
+        tanksource = this.GetComponent<AudioSource>();
         PlayerRB = GetComponent<Rigidbody>();
         bulletplaceHolder = GameObject.FindGameObjectWithTag("BPlaceHolder");
+        bm = FindObjectOfType<BattleManager>();
     }
 
     // Update is called once per frame
@@ -65,11 +70,7 @@ public class GroundMovement : MonoBehaviour
     }
 
     private void FixedUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-            MoveSpeed = 80f;
-        else
-            MoveSpeed = 12.5f;
+    {       
         PlayerRB.MovePosition(PlayerRB.position + (Movement * MoveSpeed * Time.fixedDeltaTime));
     }
 
@@ -79,7 +80,18 @@ public class GroundMovement : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             b = Instantiate(bulletPrefab, bulletplaceHolder.transform.position, Quaternion.identity);
+            tanksource.PlayOneShot(tanksource.clip);
             b.GetComponent<Rigidbody>().AddForce(transform.forward * bulletSpeed);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+            bm.UpdateScore(9);
+            bm.UpdatePlayerHealth(-10);
         }
     }
 }
