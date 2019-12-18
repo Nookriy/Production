@@ -313,6 +313,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &523567837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 523567838}
+  - component: {fileID: 523567839}
+  m_Layer: 0
+  m_Name: CharacterManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &523567838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523567837}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.00024414062, y: 0, z: 0.00018310547}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &523567839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523567837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b46ee7da87cf8f04c96ca245a1b01208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipno: 2
 --- !u!1 &556559848
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,7 +425,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Endless Mode
+  m_Text: Choose Ship
 --- !u!222 &556559851
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -531,7 +575,7 @@ GameObject:
   - component: {fileID: 798425783}
   - component: {fileID: 798425782}
   m_Layer: 5
-  m_Name: GroundCombatText
+  m_Name: TheDestroyer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -587,7 +631,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Ground Combat
+  m_Text: The Destroyer
 --- !u!222 &798425783
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1192,7 +1236,7 @@ GameObject:
   - component: {fileID: 1414196828}
   - component: {fileID: 1414196827}
   m_Layer: 5
-  m_Name: EndlessModeButton
+  m_Name: ChooseShipMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1331,7 +1375,7 @@ GameObject:
   - component: {fileID: 1475117356}
   - component: {fileID: 1475117355}
   m_Layer: 5
-  m_Name: AerialCombatText
+  m_Name: TheStrongman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1387,7 +1431,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Aerial Combat
+  m_Text: The Strongman
 --- !u!222 &1475117356
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1409,7 +1453,7 @@ GameObject:
   - component: {fileID: 1531808161}
   - component: {fileID: 1531808160}
   m_Layer: 5
-  m_Name: GroundCombatButton
+  m_Name: Ship2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1478,12 +1522,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1153163026}
-        m_MethodName: 
+      - m_Target: {fileID: 523567839}
+        m_MethodName: SetShipno2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1764,7 +1808,7 @@ GameObject:
   - component: {fileID: 2060516191}
   - component: {fileID: 2060516190}
   m_Layer: 5
-  m_Name: AerialCombatButton
+  m_Name: Ship1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1833,12 +1877,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1153163026}
-        m_MethodName: 
+      - m_Target: {fileID: 523567839}
+        m_MethodName: SetShipno1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

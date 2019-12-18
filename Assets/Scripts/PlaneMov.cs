@@ -33,6 +33,12 @@ public class PlaneMov : MonoBehaviour
     public GameObject groundplane;
     float rayLength;
 
+    [HideInInspector]
+    public CharacterManager charactermanager;
+
+    public GameObject TheStrongman;
+    public GameObject TheDestroyer;
+
     public Image crosshair;
 
     Vector3 worldMouse;
@@ -46,6 +52,24 @@ public class PlaneMov : MonoBehaviour
         playeraudiosource.clip = playerbulletsound;
         thruster.clip = thrustnoise;
         bm = FindObjectOfType<BattleManager>();
+        charactermanager = GameObject.FindObjectOfType<CharacterManager>();
+
+        if (charactermanager.shipno == 1)
+        {
+            TheStrongman.SetActive(true);
+            TheDestroyer.SetActive(false);
+        }
+        else if (charactermanager.shipno == 2)
+        {
+            TheDestroyer.SetActive(true);
+            TheStrongman.SetActive(false);
+        }
+        else
+        {
+            TheDestroyer.SetActive(true);
+            TheStrongman.SetActive(false);
+        }
+
     }
 
     // Update is called once per frame

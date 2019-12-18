@@ -474,6 +474,9 @@ MonoBehaviour:
   alttrail: {fileID: 347951581}
   planetrail: {fileID: 913950283}
   groundplane: {fileID: 1280767989}
+  charactermanager: {fileID: 0}
+  TheStrongman: {fileID: 987289130}
+  TheDestroyer: {fileID: 347951580}
   crosshair: {fileID: 792395642}
 --- !u!82 &311700715
 AudioSource:
