@@ -10,6 +10,7 @@ public class CharacterManager : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         DontDestroyOnLoad(this.gameObject);
     }
     public void SetShipno1()
