@@ -38,14 +38,14 @@ public class BattleManager : MonoBehaviour
         //change health
         playerHealth += healthChange;
         //check if player is still alive
-        if (playerHealth <= 0)
-        {
-            //GameOver
-        }
-
-        if (playerHealth <= 0)
+        
+        if (SceneManager.GetActiveScene().name == "Level1" && playerHealth <= 0)
         {
             SceneManager.LoadScene("Level2");
+        }
+        if(SceneManager.GetActiveScene().name == "Level2" && playerHealth <= 0)
+        {
+            SceneManager.LoadScene("MainMenu");
         }
         //update the text
         playerHealthText.text = "Health: " + playerHealth;
